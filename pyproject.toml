@@ -1,0 +1,27 @@
+[project]
+name = "phase-2-git-workflow-pr-automation"
+version = "1.0.0"
+description = "Secure Git workflow and PR automation lab for a DevSecOps portfolio."
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "Peter Arcuri" }]
+license = { text = "MIT" }
+
+[project.scripts]
+pr-automation = "pr_automation.cli:main"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "--cov=src/pr_automation --cov-report=term-missing"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "S"]
+ignore = ["S101"]
+
+[tool.bandit]
+exclude_dirs = ["tests"]

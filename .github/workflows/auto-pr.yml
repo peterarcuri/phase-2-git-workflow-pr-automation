@@ -1,0 +1,42 @@
+
+name: Automated PR Creation
+
+on:
+  push:
+    branches:
+      - 'feature/**'
+      - 'bugfix/**'
+      - 'hotfix/**'
+      - 'release/**'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  create-pull-request:
+    name: Create PR from GitFlow Branch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create pull request into develop
+        uses: repo-sync/pull-request@v2
+        with:
+          destination_branch: develop
+          pr_title: 'Automated PR: ${{ github.ref_name }}'
+          pr_body: |
+            ## Automated Pull Request
+
+            This PR was generated from `${{ github.ref_name }}`.
+
+            Required guardrails:
+            - Branch naming validation
+            - Lint checks
+            - Unit tests
+            - Build verification
+            - Secret detection
+            - SAST scan
+            - Dependency vulnerability scan
+          github_token: ${{ secrets.GITHUB_TOKEN }}
