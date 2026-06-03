@@ -2,9 +2,8 @@
 
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass
 import re
-
+from dataclasses import asdict, dataclass
 
 BRANCH_PATTERN = re.compile(r"^(feature|bugfix|hotfix|release)/[a-z0-9._-]+$")
 ALLOWED_TARGET_BRANCHES = {"develop", "main"}

@@ -3,9 +3,8 @@
 
 from __future__ import annotations
 
-from pathlib import Path
 import sys
-
+from pathlib import Path
 
 REQUIRED_PATHS = [
     "src/pr_automation/__init__.py",
