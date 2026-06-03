@@ -1,325 +1,375 @@
-# phase-2-git-workflow-pr-automation
-Automated Git branching and pull request validation pipeline integrating automated security scanning and compliance checks for secure code promotion
-
-
 # Phase 2 — Git Workflow & PR Automation
 
-A secure Git workflow and pull request automation lab built for a DevSecOps engineering portfolio.
+Automated Git branching, pull request validation, and security scanning pipeline built as part of my DevSecOps Engineering portfolio.
 
-This repository demonstrates how modern DevSecOps teams can enforce quality, security, and review guardrails directly inside the GitHub pull request lifecycle using a Python-based sample project.
-
----
-
-## Project Purpose
-
-The goal of this repository is to move beyond basic Git commits and demonstrate a production-style workflow using:
-
-- GitFlow-style branching
-- automated pull request creation
-- continuous integration checks
-- Python linting and unit testing
-- static application security testing
-- secret detection
-- dependency vulnerability scanning
-- branch protection policies
-- required status checks before merge
-
-This project is part of my Phase 2 DevSecOps Engineering roadmap focused on DevOps, CI/CD, automation, and secure software delivery.
+This project demonstrates how modern DevSecOps teams integrate security, quality assurance, and governance controls directly into the pull request lifecycle using GitHub Actions, automated testing, and security scanning.
 
 ---
 
-## Key Features
+# Project Overview
 
-- Automated PR creation from GitFlow branches
-- Branch naming validation
-- Python linting with Ruff
-- Unit testing with Pytest
-- Build verification script
-- SAST with CodeQL and Bandit
-- Secret detection with TruffleHog
-- SCA with pip-audit
-- Filesystem vulnerability scanning with Trivy
-- Branch protection policy documentation
+The goal of this repository is to demonstrate secure software delivery practices beyond basic Git usage.
+
+The workflow implements:
+
+* GitFlow branching strategy
+* Pull request validation pipelines
+* Automated code quality enforcement
+* Security scanning automation
+* Dependency vulnerability management
+* Branch protection and governance controls
+
+This project is part of Phase 2 of my DevSecOps Engineering roadmap focused on CI/CD automation and secure code promotion.
 
 ---
 
-## Supported Branch Patterns
+# Architecture
 
 ```text
-feature/add-login-validation
-bugfix/fix-ci-test-failure
-hotfix/remove-exposed-secret
-release/v1.0.0
-
-This project documents two common Git strategies:
-
-1. **GitFlow**
-   - Uses `main` and `develop`
-   - Feature branches merge into `develop`
-   - Release branches prepare production-ready code
-
-2. **Trunk-Based Development**
-   - Uses `main` as the primary integration branch
-   - Developers work in short-lived branches
-   - Pull requests merge quickly after automated checks pass
-
-
-
-# Screenshots & Project Demonstration
-
-The screenshots below document the complete implementation of a secure Git workflow with automated CI/CD validation, security scanning, and branch governance controls.
-
-These artifacts demonstrate how quality assurance and security controls can be integrated directly into the pull request lifecycle using GitHub Actions and modern DevSecOps practices.
+Developer
+    ↓
+Feature Branch
+    ↓
+Pull Request
+    ↓
+GitHub Actions
+    ├── Ruff Linting
+    ├── Pytest
+    ├── Build Verification
+    ├── TruffleHog
+    ├── Bandit
+    ├── CodeQL
+    ├── pip-audit
+    └── Trivy
+    ↓
+Protected Branch
+```
 
 ---
 
-## Repository Architecture
+# Technologies Used
 
-### Project Structure
+## Version Control
 
-**Screenshot:** `screenshots/project-file-tree-gitflow.png`
+* Git
+* GitHub
+* GitFlow Workflow
 
-Shows the complete repository structure including:
+## CI/CD
 
-* GitHub Actions workflows
-* Python source code
-* Unit tests
-* Security documentation
-* Configuration files
-* Sample outputs
+* GitHub Actions
 
-This demonstrates proper project organization and maintainability standards commonly used in DevOps and DevSecOps environments.
+## Code Quality
 
----
+* Ruff
+* Pytest
 
-## Local Validation Pipeline
+## Security
 
-### Ruff Code Quality Validation
+* Bandit
+* CodeQL
+* TruffleHog
+* pip-audit
+* Trivy
 
-**Screenshot:** `screenshots/ruff-lint-passing.png`
+## Language
 
-Ruff performs automated static code quality analysis before code enters the CI pipeline.
-
-Validation includes:
-
-* Import organization
-* Style consistency
-* Code quality enforcement
-* Python best practices
-
-This serves as the first quality gate within the software delivery process.
+* Python 3
 
 ---
 
-### Automated Unit Testing
-
-**Screenshot:** `screenshots/pytest-passing-gitflow.png`
-
-Pytest validates application behavior and pull request logic.
-
-Tests verify:
-
-* Branch validation logic
-* Pull request readiness evaluation
-* Security guardrail enforcement
-* Merge eligibility requirements
-
-This ensures application functionality remains stable as new code is introduced.
-
----
-
-### Build Verification
-
-**Screenshot:** `screenshots/build-verification-gitflow.png`
-
-Validates repository structure and required project components.
-
-Verification includes:
-
-* Source code validation
-* Test file validation
-* Required configuration checks
-* Repository integrity verification
-
-This prevents incomplete or malformed project structures from entering the pipeline.
-
----
-
-## Security Validation
+# Security Controls Implemented
 
 ### Static Application Security Testing (SAST)
 
-**Screenshot:** `screenshots/bandit-security-scan-gitflow.png`
+* Bandit
+* CodeQL
 
-Bandit performs automated static security analysis against the Python codebase.
+### Secret Detection
 
-Security controls include:
+* TruffleHog
 
-* Detection of insecure coding practices
-* Identification of common security weaknesses
-* Security-focused code review automation
+### Software Composition Analysis (SCA)
 
-This demonstrates implementation of Shift-Left Security principles.
+* pip-audit
 
----
+### Filesystem Vulnerability Scanning
 
-## Continuous Integration & Pull Request Workflow
+* Trivy
 
-### GitHub Actions Workflow Overview
+### Governance Controls
 
-**Screenshot:** `screenshots/github-actions-workflows.png`
-
-Shows the repository's GitHub Actions workflows responsible for:
-
-* Pull request validation
-* Security scanning
-* Pull request automation
-
-These workflows enforce quality and security requirements before code can be merged.
+* Branch Protection Rules
+* Pull Request Reviews
+* Required Status Checks
+* Protected Branches
 
 ---
 
-### Pull Request Creation
+# Branching Strategy
 
-**Screenshot:** `screenshots/create-pull-request-gitflow.png`
-
-Demonstrates the GitFlow branching strategy implemented within the repository.
-
-Workflow:
+This repository demonstrates GitFlow concepts:
 
 ```text
-feature/*
-    ↓
-Pull Request
-    ↓
-develop
-    ↓
 main
+ │
+ └── develop
+        │
+        ├── feature/*
+        ├── bugfix/*
+        ├── hotfix/*
+        └── release/*
 ```
 
-This approach provides controlled integration and release management.
+Feature branches are validated through pull requests before promotion into protected branches.
 
 ---
 
-### Pull Request Validation In Progress
+# Project Structure
 
-**Screenshot:** `screenshots/pr-checks-running.png`
+![Project Structure](screenshots/project-file-tree-gitflow.png)
 
-Shows GitHub Actions executing validation and security checks against an active pull request.
-
-Validation categories include:
-
-* Branch policy enforcement
-* Automated testing
-* Security scanning
-* Dependency auditing
-
-This demonstrates automated governance during the review process.
+The repository is organized into source code, testing, automation, workflow configuration, documentation, and security validation components.
 
 ---
 
-### Pull Request Validation Success
+# CI/CD Validation
 
-**Screenshot:** `screenshots/validation-success-gitflow.png`
+## Ruff Code Quality Checks
 
-Shows successful completion of the Continuous Integration workflow.
+![Ruff Validation](screenshots/ruff-lint-passing.png)
 
-Successful validation includes:
-
-* Branch Naming Policy Validation
-* Ruff Linting
-* Unit Test Execution
-* Build Verification
-
-Only validated code is eligible for merge.
+Automated linting ensures code quality and consistency before code promotion.
 
 ---
 
-## Security Automation Pipeline
+## Pytest Validation
 
-### Security Scan Success
+![Pytest Validation](screenshots/pytest-passing-gitflow.png)
 
-**Screenshot:** `screenshots/security-scans-gitflow.png`
-
-Shows successful completion of all automated security controls.
-
-Implemented security tooling includes:
-
-* TruffleHog Secret Detection
-* Bandit SAST Analysis
-* CodeQL Security Analysis
-* pip-audit Software Composition Analysis (SCA)
-* Trivy Filesystem Security Scanning
-
-These controls help identify vulnerabilities before code reaches protected branches.
+Unit tests validate pull request logic, branch policy enforcement, and merge readiness requirements.
 
 ---
 
-## Repository Governance
+## Build Verification
 
-### Branch Protection Rulesets
+![Build Verification](screenshots/build-verification-gitflow.png)
 
-**Screenshot:** `screenshots/branch-protection-ruleset.png`
+Build validation ensures repository integrity and required project structure.
 
-Shows repository governance controls protecting critical branches.
+---
 
-Implemented protections include:
+# Security Validation
 
-* Pull request requirement
-* Approval requirement
+## Bandit SAST Scan
+
+![Bandit Security Scan](screenshots/bandit-security-scan-gitflow.png)
+
+Static analysis identifies insecure coding patterns and security misconfigurations.
+
+---
+
+## GitHub Actions Security Pipeline
+
+![Security Scans](screenshots/security-scans-gitflow.png)
+
+The security pipeline automatically executes:
+
+* TruffleHog
+* Bandit
+* CodeQL
+* pip-audit
+* Trivy
+
+during every pull request.
+
+---
+
+# Pull Request Lifecycle
+
+## Pull Request Creation
+
+![Pull Request Creation](screenshots/create-pull-request-gitflow.png)
+
+Feature branches are promoted through pull requests for automated validation and review.
+
+---
+
+## Pull Request Validation Running
+
+![PR Validation Running](screenshots/pr-checks-running.png)
+
+GitHub Actions automatically executes validation and security checks.
+
+---
+
+## Validation Success
+
+![Validation Success](screenshots/validation-success-gitflow.png)
+
+All quality and security controls must pass before merge approval.
+
+---
+
+## Pull Request Ready for Merge
+
+![Merge Ready](screenshots/pr-ready-for-merge.png)
+
+Successful completion of all required checks results in merge eligibility.
+
+---
+
+# Branch Governance
+
+## GitHub Actions Workflows
+
+![GitHub Actions Workflows](screenshots/github-actions-workflows.png)
+
+Multiple workflows enforce validation, security scanning, and pull request automation.
+
+---
+
+## Branch Protection Rules
+
+![Branch Protection Rules](screenshots/branch-protection-ruleset.png)
+
+Protected branches enforce:
+
+* Pull request reviews
+* Approval requirements
+* Required status checks
 * Force push prevention
 * Branch deletion protection
 
-These controls reduce risk and ensure proper review procedures are followed.
-
 ---
 
-## Merge Readiness
-
-### Pull Request Ready For Merge
-
-**Screenshot:** `screenshots/pr-ready-for-merge.png`
-
-Shows a pull request after all validation and security requirements have successfully completed.
-
-This represents the final state of the DevSecOps workflow:
-
-```text
-Feature Branch
-      ↓
-Pull Request
-      ↓
-CI Validation
-      ↓
-Security Scanning
-      ↓
-Governance Verification
-      ↓
-Merge Ready
-```
-
-Only code that successfully passes all required controls becomes eligible for integration into protected branches.
-
----
-
-# DevSecOps Capabilities Demonstrated
-
-This project demonstrates practical implementation of:
+# Skills Demonstrated
 
 * GitFlow Branching Strategy
 * Pull Request Automation
-* GitHub Actions CI/CD Pipelines
+* GitHub Actions CI/CD
 * Branch Protection Rules
-* Automated Code Quality Validation
-* Unit Testing Automation
 * Static Application Security Testing (SAST)
 * Secret Detection
 * Software Composition Analysis (SCA)
-* Dependency Vulnerability Scanning
-* Shift-Left Security Practices
-* Secure Software Delivery Workflows
-* Repository Governance Controls
+* Vulnerability Management
+* Secure Code Promotion
+* Shift-Left Security
+* DevSecOps Automation
 
-Together, these controls provide a practical example of how modern DevSecOps teams integrate security, quality assurance, and governance directly into the software development lifecycle.
+---
+
+# Results
+
+Successfully implemented a secure pull request workflow that:
+
+* Enforces automated code quality validation
+* Executes security scans before merge approval
+* Prevents insecure code promotion
+* Demonstrates modern DevSecOps CI/CD practices
+* Implements governance controls through protected branches
+
+This project provides a practical example of integrating security directly into the software development lifecycle using GitHub Actions and automated DevSecOps controls.
 
 
+# Screenshots
+
+## Project Structure
+
+Shows the overall repository organization, including GitHub Actions workflows, Python source code, tests, documentation, and security configuration.
+
+![Project Structure](screenshots/project-file-tree-gitflow.png)
+
+---
+
+## Ruff Code Quality Validation
+
+All Ruff linting checks passing successfully.
+
+![Ruff Lint Passing](screenshots/ruff-lint-passing.png)
+
+---
+
+## Pytest Test Suite
+
+All automated unit tests passing successfully.
+
+![Pytest Passing](screenshots/pytest-passing-gitflow.png)
+
+---
+
+## Build Verification
+
+Repository structure validation and build verification passing successfully.
+
+![Build Verification](screenshots/build-verification-gitflow.png)
+
+---
+
+## Bandit Security Scan
+
+Static Application Security Testing (SAST) scan completed with no security findings.
+
+![Bandit Security Scan](screenshots/bandit-security-scan-gitflow.png)
+
+---
+
+## GitHub Actions Workflows
+
+Configured GitHub Actions workflows for pull request validation, security scanning, and PR automation.
+
+![GitHub Actions Workflows](screenshots/github-actions-workflows.png)
+
+---
+
+## Pull Request Creation
+
+Creating a GitFlow-style pull request from a feature branch.
+
+![Pull Request Creation](screenshots/create-pull-request-gitflow.png)
+
+---
+
+## Pull Request Checks Running
+
+Automated CI/CD validation and security checks executing against the pull request.
+
+![PR Checks Running](screenshots/pr-checks-running.png)
+
+---
+
+## Pull Request Validation Success
+
+Pull request validation workflow completed successfully.
+
+![Validation Success](screenshots/validation-success-gitflow.png)
+
+---
+
+## Security Scan Success
+
+All security controls completed successfully including:
+
+* TruffleHog
+* Bandit
+* CodeQL
+* pip-audit
+* Trivy
+
+![Security Scans Success](screenshots/security-scans-gitflow.png)
+
+---
+
+## Branch Protection Ruleset
+
+Repository governance controls protecting critical branches.
+
+![Branch Protection Ruleset](screenshots/branch-protection-ruleset.png)
+
+---
+
+## Pull Request Ready For Merge
+
+All required checks passed and pull request approved for merge.
+
+![PR Ready For Merge](screenshots/pr-ready-for-merge.png)
