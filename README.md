@@ -1,7 +1,7 @@
 # phase-2-git-workflow-pr-automation
 Automated Git branching and pull request validation pipeline integrating automated security scanning and compliance checks for secure code promotion
 
-cat > README.md <<'EOF'
+
 # Phase 2 — Git Workflow & PR Automation
 
 A secure Git workflow and pull request automation lab built for a DevSecOps engineering portfolio.
