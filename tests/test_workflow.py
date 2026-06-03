@@ -38,7 +38,7 @@ def test_rejects_invalid_or_unsafe_branch_names():
 def test_validates_allowed_target_branches():
     assert validate_target_branch("develop") is True
     assert validate_target_branch("main") is True
-    assert validate_target_branch("production") is True
+    assert validate_target_branch("production") is False
 
 
 def test_pr_requires_all_guardrails_to_pass():
@@ -50,7 +50,7 @@ def test_pr_requires_all_guardrails_to_pass():
         tests_passed=True,
         build_passed=True,
         sast_passed=True,
-        secrets_scan_passed=True,
+        secrets_scan_passed=False,
         dependency_scan_passed=True,
     )
 
