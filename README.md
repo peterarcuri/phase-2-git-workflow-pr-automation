@@ -4,6 +4,7 @@ Automated Git branching, pull request validation, and security scanning pipeline
 
 This project demonstrates how modern DevSecOps teams integrate security, quality assurance, and governance controls directly into the pull request lifecycle using GitHub Actions, automated testing, and security scanning.
 
+
 ---
 
 # Project Overview
@@ -20,6 +21,7 @@ The workflow implements:
 * Branch protection and governance controls
 
 This project is part of Phase 2 of my DevSecOps Engineering roadmap focused on CI/CD automation and secure code promotion.
+
 
 ---
 
