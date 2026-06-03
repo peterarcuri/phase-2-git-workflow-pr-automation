@@ -2,12 +2,7 @@
 name: Automated PR Creation
 
 on:
-  push:
-    branches:
-      - 'feature/**'
-      - 'bugfix/**'
-      - 'hotfix/**'
-      - 'release/**'
+  workflow_dispatch:
 
 permissions:
   contents: read
